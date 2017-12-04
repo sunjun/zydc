@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zydc.ssm.module.user.mapper.SupplierUserMapper">
+  <resultMap id="BaseResultMap" type="com.zydc.ssm.module.user.pojo.SupplierUser">
+    <id column="Supplier_User_Name" jdbcType="VARCHAR" property="supplierUserName" />
+    <result column="Supplier_Code" jdbcType="VARCHAR" property="supplierCode" />
+    <result column="Pass_Word" jdbcType="VARCHAR" property="passWord" />
+    <result column="Register_Mobil" jdbcType="VARCHAR" property="registerMobil" />
+    <result column="Company_Name" jdbcType="VARCHAR" property="companyName" />
+    <result column="Company_Code" jdbcType="VARCHAR" property="companyCode" />
+    <result column="Organize_Code" jdbcType="VARCHAR" property="organizeCode" />
+    <result column="Tax_Code" jdbcType="VARCHAR" property="taxCode" />
+    <result column="Company_Nature" jdbcType="VARCHAR" property="companyNature" />
+    <result column="Province" jdbcType="VARCHAR" property="province" />
+    <result column="City" jdbcType="VARCHAR" property="city" />
+    <result column="County" jdbcType="VARCHAR" property="county" />
+    <result column="Street" jdbcType="VARCHAR" property="street" />
+    <result column="Corporate_Representative" jdbcType="VARCHAR" property="corporateRepresentative" />
+    <result column="Registered_Capital" jdbcType="INTEGER" property="registeredCapital" />
+    <result column="Establish_Date" jdbcType="DATE" property="establishDate" />
+    <result column="Expiry_Date" jdbcType="DATE" property="expiryDate" />
+    <result column="Business_Scope" jdbcType="VARCHAR" property="businessScope" />
+    <result column="Bank" jdbcType="VARCHAR" property="bank" />
+    <result column="Account" jdbcType="VARCHAR" property="account" />
+    <result column="Service_Type" jdbcType="VARCHAR" property="serviceType" />
+    <result column="Contact_Name" jdbcType="VARCHAR" property="contactName" />
+    <result column="Email" jdbcType="VARCHAR" property="email" />
+    <result column="Common_Mobile" jdbcType="VARCHAR" property="commonMobile" />
+    <result column="Supplier_State" jdbcType="VARCHAR" property="supplierState" />
+    <result column="Supplier_Remark" jdbcType="VARCHAR" property="supplierRemark" />
+    <result column="Modify_Time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="Create_Time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Supplier_User_Name, Supplier_Code, Pass_Word, Register_Mobil, Company_Name, Company_Code, 
+    Organize_Code, Tax_Code, Company_Nature, Province, City, County, Street, Corporate_Representative, 
+    Registered_Capital, Establish_Date, Expiry_Date, Business_Scope, Bank, Account, Service_Type, 
+    Contact_Name, Email, Common_Mobile, Supplier_State, Supplier_Remark, Modify_Time, 
+    Create_Time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from z_supplier_information
+    where Supplier_User_Name = #{supplierUserName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from z_supplier_information
+    where Supplier_User_Name = #{supplierUserName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zydc.ssm.module.user.pojo.SupplierUser">
+    insert into z_supplier_information (Supplier_User_Name, Supplier_Code, Pass_Word, 
+      Register_Mobil, Company_Name, Company_Code, 
+      Organize_Code, Tax_Code, Company_Nature, 
+      Province, City, County, 
+      Street, Corporate_Representative, Registered_Capital, 
+      Establish_Date, Expiry_Date, Business_Scope, 
+      Bank, Account, Service_Type, 
+      Contact_Name, Email, Common_Mobile, 
+      Supplier_State, Supplier_Remark, Modify_Time, 
+      Create_Time)
+    values (#{supplierUserName,jdbcType=VARCHAR}, #{supplierCode,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, 
+      #{registerMobil,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, 
+      #{organizeCode,jdbcType=VARCHAR}, #{taxCode,jdbcType=VARCHAR}, #{companyNature,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, 
+      #{street,jdbcType=VARCHAR}, #{corporateRepresentative,jdbcType=VARCHAR}, #{registeredCapital,jdbcType=INTEGER}, 
+      #{establishDate,jdbcType=DATE}, #{expiryDate,jdbcType=DATE}, #{businessScope,jdbcType=VARCHAR}, 
+      #{bank,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{serviceType,jdbcType=VARCHAR}, 
+      #{contactName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{commonMobile,jdbcType=VARCHAR}, 
+      #{supplierState,jdbcType=VARCHAR}, #{supplierRemark,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zydc.ssm.module.user.pojo.SupplierUser">
+    insert into z_supplier_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierUserName != null">
+        Supplier_User_Name,
+      </if>
+      <if test="supplierCode != null">
+        Supplier_Code,
+      </if>
+      <if test="passWord != null">
+        Pass_Word,
+      </if>
+      <if test="registerMobil != null">
+        Register_Mobil,
+      </if>
+      <if test="companyName != null">
+        Company_Name,
+      </if>
+      <if test="companyCode != null">
+        Company_Code,
+      </if>
+      <if test="organizeCode != null">
+        Organize_Code,
+      </if>
+      <if test="taxCode != null">
+        Tax_Code,
+      </if>
+      <if test="companyNature != null">
+        Company_Nature,
+      </if>
+      <if test="province != null">
+        Province,
+      </if>
+      <if test="city != null">
+        City,
+      </if>
+      <if test="county != null">
+        County,
+      </if>
+      <if test="street != null">
+        Street,
+      </if>
+      <if test="corporateRepresentative != null">
+        Corporate_Representative,
+      </if>
+      <if test="registeredCapital != null">
+        Registered_Capital,
+      </if>
+      <if test="establishDate != null">
+        Establish_Date,
+      </if>
+      <if test="expiryDate != null">
+        Expiry_Date,
+      </if>
+      <if test="businessScope != null">
+        Business_Scope,
+      </if>
+      <if test="bank != null">
+        Bank,
+      </if>
+      <if test="account != null">
+        Account,
+      </if>
+      <if test="serviceType != null">
+        Service_Type,
+      </if>
+      <if test="contactName != null">
+        Contact_Name,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+      <if test="commonMobile != null">
+        Common_Mobile,
+      </if>
+      <if test="supplierState != null">
+        Supplier_State,
+      </if>
+      <if test="supplierRemark != null">
+        Supplier_Remark,
+      </if>
+      <if test="modifyTime != null">
+        Modify_Time,
+      </if>
+      <if test="createTime != null">
+        Create_Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierUserName != null">
+        #{supplierUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierCode != null">
+        #{supplierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="passWord != null">
+        #{passWord,jdbcType=VARCHAR},
+      </if>
+      <if test="registerMobil != null">
+        #{registerMobil,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="organizeCode != null">
+        #{organizeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxCode != null">
+        #{taxCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNature != null">
+        #{companyNature,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null">
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null">
+        #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="corporateRepresentative != null">
+        #{corporateRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        #{registeredCapital,jdbcType=INTEGER},
+      </if>
+      <if test="establishDate != null">
+        #{establishDate,jdbcType=DATE},
+      </if>
+      <if test="expiryDate != null">
+        #{expiryDate,jdbcType=DATE},
+      </if>
+      <if test="businessScope != null">
+        #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="commonMobile != null">
+        #{commonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierState != null">
+        #{supplierState,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierRemark != null">
+        #{supplierRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zydc.ssm.module.user.pojo.SupplierUser">
+    update z_supplier_information
+    <set>
+      <if test="supplierCode != null">
+        Supplier_Code = #{supplierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="passWord != null">
+        Pass_Word = #{passWord,jdbcType=VARCHAR},
+      </if>
+      <if test="registerMobil != null">
+        Register_Mobil = #{registerMobil,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        Company_Name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        Company_Code = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="organizeCode != null">
+        Organize_Code = #{organizeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxCode != null">
+        Tax_Code = #{taxCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNature != null">
+        Company_Nature = #{companyNature,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        Province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        City = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null">
+        County = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null">
+        Street = #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="corporateRepresentative != null">
+        Corporate_Representative = #{corporateRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        Registered_Capital = #{registeredCapital,jdbcType=INTEGER},
+      </if>
+      <if test="establishDate != null">
+        Establish_Date = #{establishDate,jdbcType=DATE},
+      </if>
+      <if test="expiryDate != null">
+        Expiry_Date = #{expiryDate,jdbcType=DATE},
+      </if>
+      <if test="businessScope != null">
+        Business_Scope = #{businessScope,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        Bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        Account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        Service_Type = #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        Contact_Name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="commonMobile != null">
+        Common_Mobile = #{commonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierState != null">
+        Supplier_State = #{supplierState,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierRemark != null">
+        Supplier_Remark = #{supplierRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        Modify_Time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        Create_Time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Supplier_User_Name = #{supplierUserName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zydc.ssm.module.user.pojo.SupplierUser">
+    update z_supplier_information
+    set Supplier_Code = #{supplierCode,jdbcType=VARCHAR},
+      Pass_Word = #{passWord,jdbcType=VARCHAR},
+      Register_Mobil = #{registerMobil,jdbcType=VARCHAR},
+      Company_Name = #{companyName,jdbcType=VARCHAR},
+      Company_Code = #{companyCode,jdbcType=VARCHAR},
+      Organize_Code = #{organizeCode,jdbcType=VARCHAR},
+      Tax_Code = #{taxCode,jdbcType=VARCHAR},
+      Company_Nature = #{companyNature,jdbcType=VARCHAR},
+      Province = #{province,jdbcType=VARCHAR},
+      City = #{city,jdbcType=VARCHAR},
+      County = #{county,jdbcType=VARCHAR},
+      Street = #{street,jdbcType=VARCHAR},
+      Corporate_Representative = #{corporateRepresentative,jdbcType=VARCHAR},
+      Registered_Capital = #{registeredCapital,jdbcType=INTEGER},
+      Establish_Date = #{establishDate,jdbcType=DATE},
+      Expiry_Date = #{expiryDate,jdbcType=DATE},
+      Business_Scope = #{businessScope,jdbcType=VARCHAR},
+      Bank = #{bank,jdbcType=VARCHAR},
+      Account = #{account,jdbcType=VARCHAR},
+      Service_Type = #{serviceType,jdbcType=VARCHAR},
+      Contact_Name = #{contactName,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      Common_Mobile = #{commonMobile,jdbcType=VARCHAR},
+      Supplier_State = #{supplierState,jdbcType=VARCHAR},
+      Supplier_Remark = #{supplierRemark,jdbcType=VARCHAR},
+      Modify_Time = #{modifyTime,jdbcType=TIMESTAMP},
+      Create_Time = #{createTime,jdbcType=TIMESTAMP}
+    where Supplier_User_Name = #{supplierUserName,jdbcType=VARCHAR}
+  </update>
+</mapper>
