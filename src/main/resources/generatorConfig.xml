@@ -26,23 +26,23 @@
         </javaTypeResolver>
 
         <!-- 数据表对应的model层  -->
-        <javaModelGenerator targetPackage="main.java.com.zydc.ssm.module.user.pojo" targetProject="src">
+        <javaModelGenerator targetPackage="com.zydc.ssm.module.user.pojo" targetProject="src">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- sql mapper 映射配置文件 -->
-        <sqlMapGenerator targetPackage="main.java.com.zydc.ssm.module.user.mapper"  targetProject="src">
+        <sqlMapGenerator targetPackage="com.zydc.ssm.module.user.mapper"  targetProject="src">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- mybatis3中的mapper接口 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="main.java.com.zydc.ssm.module.user.mapper"  targetProject="src">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zydc.ssm.module.user.mapper"  targetProject="src">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="zydc" tableName="z_supplier_information" domainObjectName="SupplierInfo"
+        <table schema="zydc" tableName="z_session" domainObjectName="Session"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

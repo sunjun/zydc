@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zydc.ssm.module.user.mapper.SessionMapper">
+  <resultMap id="BaseResultMap" type="com.zydc.ssm.module.user.pojo.Session">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="session_id" jdbcType="VARCHAR" property="sessionId" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="expires_in" jdbcType="TIMESTAMP" property="expiresIn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, session_id, created_at, expires_in
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from z_session
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from z_session
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zydc.ssm.module.user.pojo.Session">
+    insert into z_session (id, user_name, session_id, 
+      created_at, expires_in)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{sessionId,jdbcType=VARCHAR}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{expiresIn,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zydc.ssm.module.user.pojo.Session">
+    insert into z_session
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="sessionId != null">
+        session_id,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="expiresIn != null">
+        expires_in,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null">
+        #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiresIn != null">
+        #{expiresIn,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zydc.ssm.module.user.pojo.Session">
+    update z_session
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null">
+        session_id = #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiresIn != null">
+        expires_in = #{expiresIn,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zydc.ssm.module.user.pojo.Session">
+    update z_session
+    set user_name = #{userName,jdbcType=VARCHAR},
+      session_id = #{sessionId,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      expires_in = #{expiresIn,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
