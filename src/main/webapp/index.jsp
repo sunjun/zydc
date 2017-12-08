@@ -19,11 +19,15 @@
 
 <br>
 
-<a href="/sysUserController/showUserToJspById/1" target="_blank">查询用户信息并跳转到一个JSP页面</a>
+<a href="/supplierUserController/showUserToJspByName/sun" target="_blank">查询用户信息并跳转到一个JSP页面</a>
 
 <br>
 
-<a href="/sysUserController/showUserToJSONById/1" target="_blank">查询用户信息并直接输出JSON数据</a>
+<a href="/supplierUserController/showUserToJsonByName/sun" target="_blank">查询用户信息并直接输出JSON数据</a>
 
+<br>
+<a href="/supplierUserController/userCenter" target="_blank">用户中心</a>
+<br>
+<a href="/supplierUserController/register" target="_blank">注册</a>
 </body>
 </html>

@@ -17,4 +17,10 @@ public class SupplierUserServiceImpl implements SupplierUserService {
     public SupplierUser getByName(String name) {
 		return supplierUserMapper.selectByPrimaryKey(name);
 	}
+
+
+	@Override
+	public int insert(SupplierUser user) {
+		return supplierUserMapper.insert(user);
+	}
 }
