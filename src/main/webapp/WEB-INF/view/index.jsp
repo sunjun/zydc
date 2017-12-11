@@ -335,7 +335,7 @@
     </div>
       </main>
     </div>
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
         <defs>
           <mask id="piemask" maskContentUnits="objectBoundingBox">
             <circle cx=0.5 cy=0.5 r=0.49 fill="white" />
@@ -347,7 +347,7 @@
           </g>
         </defs>
       </svg>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 250" style="position: fixed; left: -1000px; height: -1000px;">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="position: fixed; left: -1000px; height: -1000px;">
         <defs>
           <g id="chart">
             <g id="Gridlines">

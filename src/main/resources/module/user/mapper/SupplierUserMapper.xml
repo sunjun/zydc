@@ -33,7 +33,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     Supplier_User_Name, Supplier_Code, Pass_Word, Register_Mobil, Company_Name, Company_Code, 
-    Organize_Code, Tax_Code, Company_Nature, Province, City, County, Street, Corporate_Representative, 
+    Organize_Code, Tax_Code, Company_Nature, Province, City, County, Street, Corporate_Representative,
     Registered_Capital, Establish_Date, Expiry_Date, Business_Scope, Bank, Account, Service_Type, 
     Contact_Name, Email, Common_Mobile, Supplier_State, Supplier_Remark, Modify_Time, 
     Create_Time
@@ -245,7 +245,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zydc.ssm.module.user.pojo.SupplierUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zydc.ssm.godule.user.pojo.SupplierUser">
     update z_supplier_information
     <set>
       <if test="supplierCode != null">
