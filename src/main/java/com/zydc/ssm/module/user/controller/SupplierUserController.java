@@ -14,6 +14,7 @@ import org.json.simple.parser.ParseException;
 
 import javax.annotation.Resource;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
 @RequestMapping("/supplierUserController")
 public class SupplierUserController {
@@ -51,6 +52,19 @@ public class SupplierUserController {
 	public SupplierUser showUser(@PathVariable("userName") String userName){
 		SupplierUser user = this.supplierUserService.getByName(userName);
 		return user;
+	}
+
+	@RequestMapping("/userInfo/{userName}")
+	@ResponseBody
+	public SupplierUser userInfo(@PathVariable("userName") String userName){
+		SupplierUser user = this.supplierUserService.getByName(userName);
+		return user;
+	}
+
+	@RequestMapping(value = "userInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public String userInfoUpdate(@RequestBody String userJson){
+        return "";
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)

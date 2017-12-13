@@ -245,7 +245,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zydc.ssm.godule.user.pojo.SupplierUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zydc.ssm.module.user.pojo.SupplierUser">
     update z_supplier_information
     <set>
       <if test="supplierCode != null">
