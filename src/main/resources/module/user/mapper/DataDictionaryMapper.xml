@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zydc.ssm.module.user.mapper.DataDictionaryMapper">
+  <resultMap id="BaseResultMap" type="com.zydc.ssm.module.user.pojo.DataDictionary">
+    <id column="Dictionary_Content" jdbcType="VARCHAR" property="dictionaryContent" />
+    <id column="Dictionary_Name_ID" jdbcType="INTEGER" property="dictionaryNameId" />
+    <result column="Dictionary_Remark" jdbcType="VARCHAR" property="dictionaryRemark" />
+    <result column="Content_Order" jdbcType="INTEGER" property="contentOrder" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Dictionary_Content, Dictionary_Name_ID, Dictionary_Remark, Content_Order
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.zydc.ssm.module.user.pojo.DataDictionaryKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from z_data_dictionary
+    where Dictionary_Content = #{dictionaryContent,jdbcType=VARCHAR}
+      and Dictionary_Name_ID = #{dictionaryNameId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.zydc.ssm.module.user.pojo.DataDictionaryKey">
+    delete from z_data_dictionary
+    where Dictionary_Content = #{dictionaryContent,jdbcType=VARCHAR}
+      and Dictionary_Name_ID = #{dictionaryNameId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zydc.ssm.module.user.pojo.DataDictionary">
+    insert into z_data_dictionary (Dictionary_Content, Dictionary_Name_ID, 
+      Dictionary_Remark, Content_Order)
+    values (#{dictionaryContent,jdbcType=VARCHAR}, #{dictionaryNameId,jdbcType=INTEGER}, 
+      #{dictionaryRemark,jdbcType=VARCHAR}, #{contentOrder,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zydc.ssm.module.user.pojo.DataDictionary">
+    insert into z_data_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dictionaryContent != null">
+        Dictionary_Content,
+      </if>
+      <if test="dictionaryNameId != null">
+        Dictionary_Name_ID,
+      </if>
+      <if test="dictionaryRemark != null">
+        Dictionary_Remark,
+      </if>
+      <if test="contentOrder != null">
+        Content_Order,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dictionaryContent != null">
+        #{dictionaryContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryNameId != null">
+        #{dictionaryNameId,jdbcType=INTEGER},
+      </if>
+      <if test="dictionaryRemark != null">
+        #{dictionaryRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="contentOrder != null">
+        #{contentOrder,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zydc.ssm.module.user.pojo.DataDictionary">
+    update z_data_dictionary
+    <set>
+      <if test="dictionaryRemark != null">
+        Dictionary_Remark = #{dictionaryRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="contentOrder != null">
+        Content_Order = #{contentOrder,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Dictionary_Content = #{dictionaryContent,jdbcType=VARCHAR}
+      and Dictionary_Name_ID = #{dictionaryNameId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zydc.ssm.module.user.pojo.DataDictionary">
+    update z_data_dictionary
+    set Dictionary_Remark = #{dictionaryRemark,jdbcType=VARCHAR},
+      Content_Order = #{contentOrder,jdbcType=INTEGER}
+    where Dictionary_Content = #{dictionaryContent,jdbcType=VARCHAR}
+      and Dictionary_Name_ID = #{dictionaryNameId,jdbcType=INTEGER}
+  </update>
+</mapper>

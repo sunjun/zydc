@@ -1,5 +1,6 @@
 package com.zydc.ssm.module.user.controller;
 
+import com.zydc.ssm.module.user.pojo.DictionaryName;
 import com.zydc.ssm.module.user.pojo.SupplierUser;
 import com.zydc.ssm.module.user.service.SupplierUserService;
 import org.slf4j.Logger;
@@ -11,8 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
@@ -109,5 +114,42 @@ public class SupplierUserController {
         return "index";
     }
 
+    @RequestMapping("/attachmentInfo")
+    @ResponseBody
+    public String attachmentInfo() {
+        int dictionaryId = 1;
+        DictionaryName dName = this.supplierUserService.getAttachmentTitle(dictionaryId);
+        String attachmentTitle = dName.getDictionaryName();
+
+        JSONObject json = new JSONObject();
+        json.put("attachmentTitle", attachmentTitle);
+
+
+        return json.toJSONString();
+    }
+
     //TODO::完善信息接口
+    @RequestMapping(value="/multipleSave", method=RequestMethod.POST )
+    public @ResponseBody String multipleSave(@RequestParam("file") MultipartFile[] files){
+        String fileName = null;
+        String msg = "";
+        if (files != null && files.length >0) {
+            for(int i =0 ;i< files.length; i++){
+                try {
+                    fileName = files[i].getOriginalFilename();
+                    byte[] bytes = files[i].getBytes();
+                    BufferedOutputStream buffStream =
+                            new BufferedOutputStream(new FileOutputStream(new File("~/cp/" + fileName)));
+                    buffStream.write(bytes);
+                    buffStream.close();
+                    msg += "You have successfully uploaded " + fileName +"<br/>";
+                } catch (Exception e) {
+                    return "You failed to upload " + fileName + ": " + e.getMessage() +"<br/>";
+                }
+            }
+            return msg;
+        } else {
+            return "Unable to upload. File is empty.";
+        }
+    }
 }

@@ -42,7 +42,18 @@
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="zydc" tableName="z_session" domainObjectName="Session"
+        <!-- <table schema="zydc" tableName="z_session" domainObjectName="Session"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        -->
+        <table schema="zydc" tableName="z_data_dictionary" domainObjectName="DataDictionary"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table schema="zydc" tableName="z_dictionary_name" domainObjectName="DictionaryName"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

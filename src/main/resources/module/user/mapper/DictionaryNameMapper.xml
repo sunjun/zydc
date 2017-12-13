@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zydc.ssm.module.user.mapper.DictionaryNameMapper">
+  <resultMap id="BaseResultMap" type="com.zydc.ssm.module.user.pojo.DictionaryName">
+    <id column="Dictionary_Name_ID" jdbcType="INTEGER" property="dictionaryNameId" />
+    <result column="Dictionary_Name" jdbcType="VARCHAR" property="dictionaryName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Dictionary_Name_ID, Dictionary_Name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from z_dictionary_name
+    where Dictionary_Name_ID = #{dictionaryNameId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from z_dictionary_name
+    where Dictionary_Name_ID = #{dictionaryNameId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zydc.ssm.module.user.pojo.DictionaryName">
+    insert into z_dictionary_name (Dictionary_Name_ID, Dictionary_Name)
+    values (#{dictionaryNameId,jdbcType=INTEGER}, #{dictionaryName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zydc.ssm.module.user.pojo.DictionaryName">
+    insert into z_dictionary_name
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dictionaryNameId != null">
+        Dictionary_Name_ID,
+      </if>
+      <if test="dictionaryName != null">
+        Dictionary_Name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dictionaryNameId != null">
+        #{dictionaryNameId,jdbcType=INTEGER},
+      </if>
+      <if test="dictionaryName != null">
+        #{dictionaryName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zydc.ssm.module.user.pojo.DictionaryName">
+    update z_dictionary_name
+    <set>
+      <if test="dictionaryName != null">
+        Dictionary_Name = #{dictionaryName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Dictionary_Name_ID = #{dictionaryNameId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zydc.ssm.module.user.pojo.DictionaryName">
+    update z_dictionary_name
+    set Dictionary_Name = #{dictionaryName,jdbcType=VARCHAR}
+    where Dictionary_Name_ID = #{dictionaryNameId,jdbcType=INTEGER}
+  </update>
+</mapper>
