@@ -1,5 +1,7 @@
 package com.zydc.ssm.module.user.controller;
 
+import com.zydc.ssm.module.user.dao.DictionaryDataDao;
+import com.zydc.ssm.module.user.pojo.DataDictionary;
 import com.zydc.ssm.module.user.pojo.DictionaryName;
 import com.zydc.ssm.module.user.pojo.SupplierUser;
 import com.zydc.ssm.module.user.service.SupplierUserService;
@@ -18,6 +20,7 @@ import javax.annotation.Resource;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
@@ -29,6 +32,12 @@ public class SupplierUserController {
 
     @Resource
     private SupplierUserService supplierUserService;
+
+    private DictionaryDataDao dictionaryDataDao;
+
+    public SupplierUserController() {
+        dictionaryDataDao = new DictionaryDataDao();
+    }
 
     @RequestMapping("/index/{username}")
     public String index(@PathVariable("username") String username){
@@ -114,17 +123,23 @@ public class SupplierUserController {
         return "index";
     }
 
-    @RequestMapping("/attachmentInfo")
+    @RequestMapping(value = "/attachmentInfo", method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
     @ResponseBody
     public String attachmentInfo() {
         int dictionaryId = 1;
-        DictionaryName dName = this.supplierUserService.getAttachmentTitle(dictionaryId);
+        //DictionaryName dName = this.supplierUserService.getAttachmentTitle(dictionaryId);
+        DictionaryName dName = dictionaryDataDao.getDictionNameById(dictionaryId);
         String attachmentTitle = dName.getDictionaryName();
 
         JSONObject json = new JSONObject();
         json.put("attachmentTitle", attachmentTitle);
+        List<DataDictionary> dataList = dictionaryDataDao.getAllData();
 
-
+        int i = 0;
+        for (DataDictionary dataDictionary : dataList) {
+            json.put("attachment" + Integer.toString(i), dataDictionary.getDictionaryContent());
+            i++;
+        }
         return json.toJSONString();
     }
 
